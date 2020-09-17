@@ -1,0 +1,9 @@
+site_name: Abra Eyetracking
+nav:
+  - Home: index.md
+  - Tutorial: tutorial.md
+  - API Reference: API Reference.md
+  - About: about.md
+  - License: license.md
+
+theme: readthedocs
