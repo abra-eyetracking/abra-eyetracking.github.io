@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>About - Abra Eyetracking</title>
+  <title>abra.data.read - Abra Eyetracking</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "About";
-    var mkdocs_page_input_path = "about.md";
+    var mkdocs_page_name = "abra.data.read";
+    var mkdocs_page_input_path = "read.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -63,10 +63,8 @@
                     <li class="toctree-l1"><a class="reference internal" href="../tutorial/">Tutorial</a>
                     </li>
                 </ul>
-                <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">About</a>
-    <ul class="current">
-    </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../about/">About</a>
                     </li>
                 </ul>
                 <ul>
@@ -94,7 +92,7 @@
     
       
     
-    <li>About</li>
+    <li>abra.data.read</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -105,35 +103,50 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="about">About</h1>
-<p>Abra Eyetracking is an open source package for eyetracking data visualization and analysis. This package was developed by a team from the <a href="https://braininstitute.us/">Institute for Interdisciplinary Brain and Behavioral Sciences</a>.</p>
-<p><strong>Contributors:</strong></p>
-<ul>
-<li><a href="https://github.com/andylikescodes">Andy Liang</a></li>
-<li><a href="https://github.com/AkimaCon">Akima Connelly</a></li>
-<li><a href="https://github.com/npeverett">Nate Everett</a></li>
-<li><a href="https://github.com/amansourian">Arman Mansourian</a></li>
-<li><a href="https://github.com/jgavenas42">Jake Gavenas</a></li>
-</ul>
-<p><strong>Contribution to the project</strong></p>
-<p>Abra is an open source package and is free to the community. It was written and provided free to make handling eye-tracking data a little easier by people who will not make any money from it. Abra was started by a small team which could only implement so much, which is why we ask the community help us grow this package to potential we believe it has. Any contribution is welcomed, whether it is small or large.</p>
-<p><strong>How to contribute</strong></p>
-<p>To contribute please either contact us at <strong>ENTER EMAIL OR CONTACT</strong> or add a post to the forum. Any contribution is welcomed whether it is a small bug change or a new function that should be added.</p>
-<p><strong>Troubleshooting</strong></p>
-<p>Easiest way to resolve any issues is by either emailing us at <strong>EMAIL</strong> or asking in the <strong>FORUM</strong>. Please add as much description as possible of the error for us to understand and quickly fix the problem. </p>
+                <h1 id="abradataread">abra.data.read</h1>
+<p>The read function is used to create a data object that will contain important information from the eye-tracking data file. The information stored are timestamps, pupil size, eye movements, messages, events, trial markers (start and end), and sample rates.
+You can use the parameters to create specialized data extractions
+<br>
+Read method will read in the ascii file and extract the data</p>
+<h3 id="parameters">Parameters</h3>
+<p><pre>
+<strong>file_name</strong></p>
+<p>Takes in the name of the file you are trying to extract data from
+</pre></p>
+<p><strong>mode</strong>
+<pre>
+    <strong>d</strong> = defualt
+    <strong>u</strong> = user defined
+</pre>
+<post>
+    <strong>default</strong> will use the default start and end times given in the file
+    <strong>user defined</strong> will take in start_msg and end_msg to use as the
+</post></p>
+<pre><code>eyes_recorded: Define which eye data to extract if both eyes are
+               being recorded
+"left", "right", "auto"
+default is "auto" which will take whichever eye it finds first
+
+both_eyes_recorded:
+True: if both eyes were recorded
+False: is only the left or right eyes was being recorded
+
+start and end marker
+"start_msg" will use regular expression to identify the user inputed
+
+message markers
+ex. r"TRIAL \d START"
+
+"end_msg" will use regular expression to identify the user inputed end
+message makers
+ex. r"TRIAL \d END"
+
+Returns Data Object
+</code></pre>
               
             </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../license/" class="btn btn-neutral float-right" title="License">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../tutorial/" class="btn btn-neutral" title="Tutorial"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
@@ -157,10 +170,6 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../tutorial/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../license/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

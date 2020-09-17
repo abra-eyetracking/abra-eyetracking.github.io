@@ -50,19 +50,19 @@
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href=".">Home</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#commands">Commands</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#project-layout">Project layout</a>
-    </li>
     </ul>
                     </li>
                 </ul>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="tutorial/">Tutorial</a>
+                    <li class="toctree-l1"><a class="reference internal" href="api/">API Reference</a>
                     </li>
                 </ul>
                 <ul>
-                    <li class="toctree-l1"><a class="" href="API Reference.md">API Reference</a>
+                    <li class="toctree-l1"><a class="reference internal" href="trial_check/">Terminal Application</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="tutorial/">Tutorial</a>
                     </li>
                 </ul>
                 <ul>
@@ -105,22 +105,15 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="welcome-to-abra-eyetracking-documentation">Welcome to Abra Eyetracking Documentation</h1>
+                <h1 id="welcome-to-abra-eyetracking">Welcome to Abra Eyetracking</h1>
+<p>Abra Eyetracking is an open source package for visualizing and analyzing eyetracking data. This package can used as anything general as extracting important information such as pupil size, eye movement, and event related markers or messsages. Data extraction can be specialized to how the user marked their start and end messages.
+<br>
+Visualization of the data can be performed in two ways. The first is using python or Jupyter notebook to create plots. Methods in the <a href="api/#abradatadata">Data object</a> can create <a href="api/#abradatadatacreate_session">Session object</a> that has a list of <a href="api/#abratrialtrial">Trials</a> or <a href="api/#abradatadatacreate_session">Epoch object</a> that create a list of time locked epochs for each trial. The Session or Epoch object can allow for visualization of <a href="api/#abrasessionbaseplotpupilsize">pupil size</a>, <a href="api/#abrasessionbasegetmovement">movement</a>, <a href="api/#abrasessionbasegetbubbleplot">fixation points</a>, <a href="api/#abrasessionbase">etc</a>.</p>
+<p><br>
+<br>
+A <a href="tutorial/">tutorial</a> is available to show the basic function of the package</p>
+<p><br></p>
 <p>To visit the GitHub Repository visit <a href="https://github.com/abra-eyetracking/abra-eyetracking">abra-eyetracking</a></p>
-<p>For mkdocs documentation visit <a href="https://www.mkdocs.org">mkdocs.org</a>.</p>
-<h2 id="commands">Commands</h2>
-<ul>
-<li><code>mkdocs new [dir-name]</code> - Create a new project.</li>
-<li><code>mkdocs serve</code> - Start the live-reloading docs server.</li>
-<li><code>mkdocs build</code> - Build the documentation site.</li>
-<li><code>mkdocs -h</code> - Print help message and exit.</li>
-</ul>
-<h2 id="project-layout">Project layout</h2>
-<pre><code>mkdocs.yml    # The configuration file.
-docs/
-    index.md  # The documentation homepage.
-    ...       # Other markdown pages, images and other files.
-</code></pre>
               
             </div>
           </div>
@@ -128,7 +121,7 @@ docs/
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="tutorial/" class="btn btn-neutral float-right" title="Tutorial">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="api/" class="btn btn-neutral float-right" title="API Reference">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
     </div>
@@ -156,7 +149,7 @@ docs/
       
       
       
-        <span style="margin-left: 15px"><a href="tutorial/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="api/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
@@ -174,5 +167,5 @@ docs/
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2020-09-17 01:23:12.775906+00:00
+Build Date UTC : 2020-09-17 01:28:43.097153+00:00
 -->

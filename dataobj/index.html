@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>About - Abra Eyetracking</title>
+  <title>abra.data.data: object - Abra Eyetracking</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "About";
-    var mkdocs_page_input_path = "about.md";
+    var mkdocs_page_name = "abra.data.data: object";
+    var mkdocs_page_input_path = "dataobj.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -63,10 +63,8 @@
                     <li class="toctree-l1"><a class="reference internal" href="../tutorial/">Tutorial</a>
                     </li>
                 </ul>
-                <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">About</a>
-    <ul class="current">
-    </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../about/">About</a>
                     </li>
                 </ul>
                 <ul>
@@ -94,7 +92,7 @@
     
       
     
-    <li>About</li>
+    <li>abra.data.data: object</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -105,35 +103,36 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="about">About</h1>
-<p>Abra Eyetracking is an open source package for eyetracking data visualization and analysis. This package was developed by a team from the <a href="https://braininstitute.us/">Institute for Interdisciplinary Brain and Behavioral Sciences</a>.</p>
-<p><strong>Contributors:</strong></p>
-<ul>
-<li><a href="https://github.com/andylikescodes">Andy Liang</a></li>
-<li><a href="https://github.com/AkimaCon">Akima Connelly</a></li>
-<li><a href="https://github.com/npeverett">Nate Everett</a></li>
-<li><a href="https://github.com/amansourian">Arman Mansourian</a></li>
-<li><a href="https://github.com/jgavenas42">Jake Gavenas</a></li>
-</ul>
-<p><strong>Contribution to the project</strong></p>
-<p>Abra is an open source package and is free to the community. It was written and provided free to make handling eye-tracking data a little easier by people who will not make any money from it. Abra was started by a small team which could only implement so much, which is why we ask the community help us grow this package to potential we believe it has. Any contribution is welcomed, whether it is small or large.</p>
-<p><strong>How to contribute</strong></p>
-<p>To contribute please either contact us at <strong>ENTER EMAIL OR CONTACT</strong> or add a post to the forum. Any contribution is welcomed whether it is a small bug change or a new function that should be added.</p>
-<p><strong>Troubleshooting</strong></p>
-<p>Easiest way to resolve any issues is by either emailing us at <strong>EMAIL</strong> or asking in the <strong>FORUM</strong>. Please add as much description as possible of the error for us to understand and quickly fix the problem. </p>
+                <h1 id="abradatadata-object">abra.data.data: object</h1>
+<p>The data object is an object created by the <a href="../read/">read</a> function. The object stores timestamps, start and end trial markers, sample rate, messages, event (fixation and saccade), pupil size, and eye movements</p>
+<h2 id="parameters">Parameters</h2>
+<p><strong>timestamps: List<int></strong></p>
+<p>List of timestamps within the eye-tracker data.</p>
+<p><strong>sample_rate: int</strong></p>
+<p>The value of the sample rate of the data.</p>
+<p><strong>messages: List<str></strong></p>
+<p>List of messages that are within the trials in the eye-tracker data.</p>
+<p><strong>events: dict</strong></p>
+<p>The events dictionary of holds all event triggers within the data. The key is the event type and the value is the information that the event contained.</p>
+<p><strong>trial_markers: dict</strong></p>
+<p>trial_markers is a dictionary that holds the timestamps of the start and end of the specified events. The keys are "start" and "end".</p>
+<p><strong>pupil_size: List<float></strong></p>
+<p>The pupil_size list hold float values of the pupil size within the trials recorded. The pupil_size list has the same indexing as timestamps.
+eg. index 0 for pupil_size is correlated to the timestamp at timestamp index 0</p>
+<p><strong>movement: list<int><float></strong></p>
+<p>Movement is a 2d list that hold values for the x-axis and y-axis. Movement[0] is a list of movement coordinates at the x-axis. Movement[1] is a list of movement coordinates at the y-axis. Both list indexing is correlated to the indexing of timestamps.</p>
+<p><br>
+<br></p>
+<p><post></p>
+<p><a href="../create_session/">abra.data.data.create_session</a>: function
+create_session is a function within the data object that will create a list of trial objects containing all information contained within predefined trials. This function will return a <a href="../sessions/">sessions</a> object.</p>
+<p><a href="../create_epoch/">abra.data.data.create_epoch</a>: function
+create_epoch is a function within the data object that will create a list of predefined time-locked epochs. All information within the range of the time of the defined epoch will be contained. This function will return an <a href="epoch.md">epoch</a> object.</p>
+<p></post></p>
               
             </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../license/" class="btn btn-neutral float-right" title="License">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../tutorial/" class="btn btn-neutral" title="Tutorial"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
@@ -157,10 +156,6 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../tutorial/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../license/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

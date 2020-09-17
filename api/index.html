@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Api - Abra Eyetracking</title>
+  <title>API Reference - Abra Eyetracking</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,7 +18,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Api";
+    var mkdocs_page_name = "API Reference";
     var mkdocs_page_input_path = "api.md";
     var mkdocs_page_url = null;
   </script>
@@ -51,12 +51,82 @@
                     <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
                     </li>
                 </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../tutorial/">Tutorial</a>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">API Reference</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#abradata">abra.data</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#abradataread">abra.data.read</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#abradataremove_eye_blinks">abra.data.remove_eye_blinks</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#abradatadata">abra.data.Data</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#abradatadatacreate_session">abra.data.Data.create_session</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#abradatadatacreate_epochs">abra.data.Data.create_epochs</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#abratrial">abra.trial</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#abratrialtrial">abra.trial.Trial</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#abratrailtrialsummary">abra.trail.Trial.summary</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#abrasession">abra.session</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#abrasessionbase">abra.session.base</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#abrasessionbasesummary">abra.session.Base.summary</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#abrasessionbaseget_trial">abra.session.Base.get_trial</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#abrasessionbaseget_pupil">abra.session.Base.get_pupil</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#abrasessionbaseget_movement">abra.session.Base.get_movement</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#abrasessionbaseget_timestamps">abra.session.Base.get_timestamps</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#abrasessionbaseget_fixation">abra.session.Base.get_fixation</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#abrasessionbaseselect">abra.session.Base.select</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#abrasessionbaseplot_pupil_size">abra.session.Base.plot_pupil_size</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#abrasessionbaseplot_tragectory">abra.session.Base.plot_tragectory</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#abrasessionbaseplot_xy">abra.session.Base.plot_xy</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#abrasessionbaseget_x_y">abra.session.Base.get_x_y</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#abrasessionbaseget_bubble_plot">abra.session.Base.get_bubble_plot</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#abrasessionsession">abra.session.Session</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#abrasessionepoch">abra.session.Epoch</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#abravisualization">abra.Visualization</a>
+    </li>
+    </ul>
                     </li>
                 </ul>
                 <ul>
-                    <li class="toctree-l1"><a class="" href="../API Reference.md">API Reference</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../trial_check/">Terminal Application</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../tutorial/">Tutorial</a>
                     </li>
                 </ul>
                 <ul>
@@ -88,7 +158,7 @@
     
       
     
-    <li>Api</li>
+    <li>API Reference</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -99,11 +169,456 @@
           <div role="main">
             <div class="section">
               
-                
+                <h1 id="api-reference">API Reference</h1>
+<h2 id="abradata">abra.data</h2>
+<h3 id="abradataread">abra.data.read</h3>
+<pre><code>function abra.data.read(filename, eyes_recorded = &quot;auto&quot;, both_eyes_recorded = False,
+                        mode=&quot;d&quot;, start_msg=r&quot;TRIAL \d{1,2} START&quot;,
+                        end_msg=r&quot;TRIAL \d{1,2} END&quot;)
+</code></pre>
+
+<p>The read function is used to create a data object that will contain important information from the eye-tracking data file. The information stored are timestamps, pupil size, eye movements, messages, events, trial markers (start and end), and sample rates. You can use the parameters to create specialized data extractions. Read function will read in the ascii file and extract the data.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><strong>file_name</strong>: Takes in the name of the file you are trying to extract data from</li>
+<li>
+<p><strong>mode</strong>: 'd' = default, use the default start and end times given in the file. 'u' = user defined, take in start_msg and end_msg to use as the.</p>
+</li>
+<li>
+<p><strong>eyes_recorded</strong>: Define which eye data to extract if both eyes are
+                   being recorded. default is "auto" which will take whichever eye it finds first</p>
+</li>
+<li>
+<p><strong>both_eyes_recorded</strong>: True = if both eyes were recorded. False = is only the left or right eyes was being recorded.</p>
+</li>
+<li>
+<p><strong>start_msg</strong>: use regular expression to identify the user inputed start message markers, ex. <code>r"TRIAL \d START"</code></p>
+</li>
+<li>
+<p><strong>end_msg</strong>: use regular expression to identify the user inputed end message makers, ex. r"TRIAL \d END"</p>
+</li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul>
+<li><strong><a href="#abradatadata">abra.data.Data</a></strong>: The Data object</li>
+</ul>
+<p><br></p>
+<h3 id="abradataremove_eye_blinks">abra.data.remove_eye_blinks</h3>
+<pre><code>function remove_eye_blinks(abra_obj, buffer=50, interpolate='linear', inplace=False)
+</code></pre>
+
+<p>Takes in the <a href="#abradatadata">data</a> object made from the read function and removes eye blinks from the data.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li>
+<p><strong>abra_obj</strong>: <a href="#abradatadata">data</a> object</p>
+</li>
+<li>
+<p><strong>buffer</strong>: Time in ms of a buffer to remove eye blinks from data.
+  Default is set to 50ms</p>
+</li>
+<li>
+<p><strong>interpolate</strong>: Option of whether you would like to interpolate the data.
+  Default is "linear"
+  None is the other option</p>
+</li>
+<li>
+<p><strong>inplace</strong>: Option to remove eye blinks inplace or not</p>
+</li>
+</ul>
+<p><strong>Return:</strong></p>
+<ul>
+<li><strong><a href="#abradatadata">abra.data.Data</a></strong>: The Data object with eye blinks removed</li>
+</ul>
+<pre><code>dataobj = abra.data.read(filename)
+
+rm_blink = abra.data.remove_eye_blinks(dataobj)
+</code></pre>
+
+<p><br></p>
+<h3 id="abradatadata">abra.data.Data</h3>
+<p>The data object is an object created by the <a href="#abradataread">read</a> function. The object stores timestamps, start and end trial markers, sample rate, messages, event (fixation and saccade), pupil size, and eye movements.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li>
+<p><strong>timestamps List<int>,</strong> List of timestamps within the eye-tracker data.</p>
+</li>
+<li>
+<p><strong>sample_rate: int,</strong> The value of the sample rate of the data.</p>
+</li>
+<li>
+<p><strong>messages: List<str>,</strong> List of messages that are within the trials in the eye-tracker data.</p>
+</li>
+<li>
+<p><strong>events: dict,</strong> The events dictionary of holds all event triggers within the data. The key is the event type and the value is the information that the event contained.</p>
+</li>
+<li>
+<p><strong>trial_markers: dict,</strong> trial_markers is a dictionary that holds the timestamps of the start and end of the specified events. The keys are "start" and "end".</p>
+</li>
+<li>
+<p><strong>pupil_size: List<float>,</strong> The pupil_size list hold float values of the pupil size within the trials recorded. The pupil_size list has the same indexing as timestamps.
+eg. index 0 for pupil_size is correlated to the timestamp at timestamp index 0</p>
+</li>
+<li>
+<p><strong>movement: list<int><float>,</strong> Movement is a 2d list that hold values for the x-axis and y-axis. Movement[0] is a list of movement coordinates at the x-axis. Movement[1] is a list of movement coordinates at the y-axis. Both list indexing is correlated to the indexing of timestamps.</p>
+</li>
+</ul>
+<p><strong>Return:</strong></p>
+<ul>
+<li><strong>Data</strong>: returns a data object</li>
+</ul>
+<p><strong>Methods:</strong></p>
+<ul>
+<li><a href="#abradatadatacreate_session">create_session(self, conditions=None)</a></li>
+<li><a href="#abradatadatacreate_epoch">create_epoch(self, event_timestamps, conditions=None, pre_event=200, post_event=200, pupil_baseline=None)</a></li>
+</ul>
+<h4 id="abradatadatacreate_session">abra.data.Data.create_session</h4>
+<pre><code>Method create_session(self, conditions=None)
+</code></pre>
+
+<p>create_session is a function within the data object. The function will sort the data into a list of trial objects. This function will return a <a href="#abrasession">session</a> object.</p>
+<p><strong>Parameter:</strong></p>
+<ul>
+<li><strong>conditions</strong>: condition you want to apply to the method. Default is None</li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul>
+<li><strong><a href="#abrasession">Session</a></strong>: The Session object that contains a list of <a href="#abratrialtrial">Trial</a> objects.</li>
+</ul>
+<pre><code> data = abra.data.read(filename)
+ data.create_session()
+</code></pre>
+
+<h4 id="abradatadatacreate_epochs">abra.data.Data.create_epochs</h4>
+<pre><code>Method create_epochs(self, event_timestamps, conditions=None,
+              pre_event=200, post_event=200, pupil_baseline=None)
+</code></pre>
+
+<p>The create_epoch function creates a list of time-locked epochs and returns an <a href="#abraepoch">epoch</a> object.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li>
+<p><strong>event_timestamps</strong>: Starting timestamps for all time locked events.</p>
+</li>
+<li>
+<p><strong>conditions</strong>:Desired event condition.</p>
+</li>
+<li>
+<p><strong>pre_event</strong>: Milliseconds before defined starting timestamps.</p>
+</li>
+<li>
+<p><strong>post_event</strong>: Milliseconds after defined starting timestamps.</p>
+</li>
+<li>
+<p><strong>pupil_baseline</strong>: Baselining for pupil size data. The baseline period will be the milliseconds before pre_event</p>
+</li>
+</ul>
+<p><strong>Return:</strong></p>
+<ul>
+<li><strong><a href="#abraepoch">Epoch</a></strong>: The Epoch objects that contains a list of the time locked trials</li>
+</ul>
+<pre><code>data = abra.data.read(filename)
+data.create_epochs(conditions = None, pre_event = 200, post_event = 200, pupil_baseline = None)
+</code></pre>
+
+<p><br></p>
+<h2 id="abratrial">abra.trial</h2>
+<h3 id="abratrialtrial">abra.trial.Trial</h3>
+<pre><code>Class Trial(self, timestamps, pupil_size, movement_X = [], movement_y = [], event_L = [], event_R = [])
+</code></pre>
+
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><strong>timestamps</strong>: list of timestamps</li>
+<li><strong>pupil_size</strong>: list of pupil sizes</li>
+<li><strong>movement_X</strong>: list of movements in x-axis</li>
+<li><strong>movement_y</strong>: list of movements in y-axis</li>
+<li><strong>event_L</strong>: list of fixation events for the left eye</li>
+<li><strong>event_R</strong>: list of fixation events for the right eye</li>
+</ul>
+<p><strong>Return:</strong></p>
+<ul>
+<li><strong>Trial</strong>: returns a Trial object</li>
+</ul>
+<p><strong>Method:</strong></p>
+<ul>
+<li><strong><a href="#abratrialtrialsummary">abra.trial.Trial.summary</a></strong></li>
+</ul>
+<h4 id="abratrailtrialsummary">abra.trail.Trial.summary</h4>
+<pre><code>Method summary(self, verbose = False)
+</code></pre>
+
+<p>Returns a dictionary of statistics of pupil data.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><strong>verbose: boolean,</strong> True will print the summary.</li>
+</ul>
+<p><strong>Return:</strong></p>
+<ul>
+<li><strong>summary</strong>: Dictionary of summary statistic for pupil size containing, [mean]: pupil mean, [variance]: pupil variance, [stdev]: pupil standard deviation, [length]: pupil size, [min]: pupil minimum, [max]: pupil maximum</li>
+</ul>
+<h2 id="abrasession">abra.session</h2>
+<h3 id="abrasessionbase">abra.session.base</h3>
+<pre><code>Class Base(self, data, sample_rate, conditions=None)
+</code></pre>
+
+<p><strong>Parameters:</strong></p>
+<ul>
+<li>
+<p><strong>data</strong>: List of <a href="#abratrialtrial">Trial</a> objects</p>
+</li>
+<li>
+<p><strong>sample_rate</strong>: Hold the value of the sample rate that the trial was recorded with</p>
+</li>
+<li>
+<p><strong>conditions</strong>: Condition that you want the data to be treated with.</p>
+</li>
+</ul>
+<p><strong>Methods:</strong></p>
+<ul>
+<li><strong><a href="#abrasessionbasesumary">summary(self, verbose = False)</a></strong></li>
+<li><strong><a href="#abrasessionbasegettrial">get_trial(self, trial_num)</a></strong></li>
+<li><strong><a href="#abrasessionbasegetpupil">get_pupil(self)</a></strong></li>
+<li><strong><a href="#abrasessionbasegetmovement">get_movement(self)</a></strong></li>
+<li><strong><a href="#abrasessionbasegettimestamps">get_timestamps(self)</a></strong></li>
+<li><strong><a href="#abrasessionbasegetfixation">get_fixation(self)</a></strong></li>
+<li><strong><a href="#abrasessionbaseselect">select(self, indexes)</a></strong></li>
+<li><strong><a href="#abrasessionbaseplotpupilsize">plot_pupil_size(self, trial_num = 1)</a></strong></li>
+<li><strong><a href="#abrasessionbaseplottragectory">plot_tragectory(self, trial_num = 1, image_file = None, screen_size = (1920,1080))</a></strong></li>
+<li><strong><a href="#abrasessionbaseplotxy">plot_xy(self, trial_num = 1)</a></strong></li>
+<li><strong><a href="#abrasessionbasegetxy">get_x_y(self, data)</a></strong></li>
+<li><strong><a href="#abrasessionbasegetbubbleplot">get_bubble_plot(self, trial_num = 1, image_file = None, screen_size = (1920, 1080))</a></strong></li>
+</ul>
+<h4 id="abrasessionbasesummary">abra.session.Base.summary</h4>
+<pre><code>summary(self, verbose = False)
+</code></pre>
+
+<p>Returns a dictionary that holds summary statistics for pupil size of all the trials in the base class.</p>
+<p><strong>Parameter:</strong></p>
+<ul>
+<li><strong>verbose: boolean,</strong> True will print the summary.</li>
+</ul>
+<p><strong>Return:</strong></p>
+<ul>
+<li><strong>summary</strong>: Dictionary of summary statistic for pupil size containing, [mean]: pupil mean, [variance]: pupil variance, [stdev]: pupil standard deviation, [length]: pupil size, [min]: pupil minimum, [max]: pupil maximum</li>
+</ul>
+<h4 id="abrasessionbaseget_trial">abra.session.Base.get_trial</h4>
+<pre><code>get_trial(self, trial_num)
+</code></pre>
+
+<p>Will return the data from specified trial.</p>
+<p><strong>Parameter:</strong></p>
+<ul>
+<li><strong>trial_num: int,</strong> trial number you want to find.</li>
+</ul>
+<p><strong>Return:</strong></p>
+<ul>
+<li><strong><a href="#abratrialtrial">Trial</a> object</strong>: Return Trial object by specified trial number</li>
+</ul>
+<h4 id="abrasessionbaseget_pupil">abra.session.Base.get_pupil</h4>
+<pre><code>get_pupil(self)
+</code></pre>
+
+<p>Returns a list pupil sizes in each trial</p>
+<p><strong>Return:</strong></p>
+<ul>
+<li><strong>numpy array</strong>: a nested list of pupil sizes for each trial.</li>
+</ul>
+<h4 id="abrasessionbaseget_movement">abra.session.Base.get_movement</h4>
+<pre><code>get_movement(self)
+</code></pre>
+
+<p>Returns a list of eye movements in each trial</p>
+<p><strong>Return:</strong></p>
+<ul>
+<li><strong>numpy array</strong>: a 2d array that holds eye movements in the x-axis at index 0 and movements in the y-axis at index 1. At each index there is a nested list for the movement direction per trial.</li>
+</ul>
+<h4 id="abrasessionbaseget_timestamps">abra.session.Base.get_timestamps</h4>
+<pre><code>get_timestamps(self)
+</code></pre>
+
+<p>Returns a list of timestamps in each trial</p>
+<p><strong>Return:</strong></p>
+<ul>
+<li><strong>numpy array</strong>: nested list of timestamps for each trial</li>
+</ul>
+<h4 id="abrasessionbaseget_fixation">abra.session.Base.get_fixation</h4>
+<pre><code>get_fixation(self)
+</code></pre>
+
+<p>Returns a list of eye movements during fixation for each trial.</p>
+<p><strong>Return:</strong></p>
+<ul>
+<li><strong>numpy array</strong>: a 2d array that holds eye movements during fixation in the x-axis at index 0 and movements in the y-axis at index 1. At each index there is a nested list for the eye movement direction per trial.</li>
+</ul>
+<h4 id="abrasessionbaseselect">abra.session.Base.select</h4>
+<pre><code>select(self, indexes)
+</code></pre>
+
+<p>Selects specified trial by index value.</p>
+<p><strong>Return:</strong></p>
+<ul>
+<li><strong><a href="#abratrialtrial">Trial</a> object</strong>: Return Trial object by specified index list of Trial objects</li>
+</ul>
+<h4 id="abrasessionbaseplot_pupil_size">abra.session.Base.plot_pupil_size</h4>
+<pre><code>plot_pupil_size(self, trial_num = 1)
+</code></pre>
+
+<p>Plots pupil size of the specified trial.</p>
+<p><strong>Return:</strong></p>
+<ul>
+<li><strong>matplotlib plot</strong>: returns a plot</li>
+</ul>
+<h4 id="abrasessionbaseplot_tragectory">abra.session.Base.plot_tragectory</h4>
+<pre><code>plot_tragectory(self, trial_num = 1, image_file = None, screen_size = (1920,1080))
+</code></pre>
+
+<p>Plots eye movement for specified trial. Can plot over image and specify dimension the screen used with eye-tracker.</p>
+<p><strong>Paramters:</strong></p>
+<ul>
+<li>
+<p><strong>trial_num: int,</strong> trial to plot eye movement</p>
+</li>
+<li>
+<p><strong>image_file: string,</strong> file path to image</p>
+</li>
+<li>
+<p><strong>screen_size: list,</strong> Resolution dimension of the screen used. (Width, Height)</p>
+</li>
+</ul>
+<p><strong>Return:</strong></p>
+<ul>
+<li><strong>matplotlib plot</strong>: returns a plot</li>
+</ul>
+<h4 id="abrasessionbaseplot_xy">abra.session.Base.plot_xy</h4>
+<pre><code>plot_xy(self, trial_num = 1)
+</code></pre>
+
+<p>Plots horizontal and vertical eye movement across the time of the trial.</p>
+<p><strong>Paramter:</strong></p>
+<ul>
+<li><strong>trial_num: int,</strong> trial to plot for eye movement</li>
+</ul>
+<p><strong>Return:</strong></p>
+<ul>
+<li><strong>matplotlib plot</strong>: returns a plot</li>
+</ul>
+<h4 id="abrasessionbaseget_x_y">abra.session.Base.get_x_y</h4>
+<pre><code>get_x_y(self, data)
+</code></pre>
+
+<p>Gets the mean and length of eye movement for each fixation in the specified trial.</p>
+<p><strong>Paramter</strong></p>
+<ul>
+<li><strong>data</strong>: list of eye movements during fixation for specified trial</li>
+</ul>
+<p><strong>Return:</strong></p>
+<ul>
+<li><strong>numpy array, numpy array</strong>: returns 2 numpy arrays. The first contains the mean and length of eye movements in the horizontal direction and the second contains movements in the vertical direction.</li>
+</ul>
+<h4 id="abrasessionbaseget_bubble_plot">abra.session.Base.get_bubble_plot</h4>
+<pre><code>get_bubble_plot(self, trial_num = 1, image_file = None, screen_size = (1920, 1080))
+</code></pre>
+
+<p>A bubble plot is created to visualize fixation points during specified trial. image_file give the option to plot fixation points over imagea used during eye-tracking recording sessions.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li>
+<p><strong>trial_num: int,</strong> trial to plot fixation points</p>
+</li>
+<li>
+<p><strong>image_file: string,</strong> image file path</p>
+</li>
+<li>
+<p><strong>screen_size: list,</strong> Resolution dimension of the screen used. (Width, Height)</p>
+</li>
+</ul>
+<p><strong>Return:</strong></p>
+<ul>
+<li><strong>matplotlib plot</strong>: returns a bubble plot</li>
+</ul>
+<h3 id="abrasessionsession">abra.session.Session</h3>
+<pre><code>Session(Base)
+</code></pre>
+
+<p>Subclass of Base that hold whole trials</p>
+<p><strong>Parameter:</strong></p>
+<ul>
+<li><strong>Base</strong>: [Base][#abrasessionBase] class</li>
+</ul>
+<p><strong>Attributes:</strong></p>
+<ul>
+<li>
+<p><strong>data</strong>: List of <a href="#abratrialtrial">Trial</a> objects</p>
+</li>
+<li>
+<p><strong>sample_rate</strong>: Hold the value of the sample rate that the trial was recorded with</p>
+</li>
+<li>
+<p><strong>conditions</strong>: Condition that you want the data to be treated with.</p>
+</li>
+</ul>
+<p><strong>Return:</strong></p>
+<ul>
+<li><strong>Session</strong>: returns a Session object</li>
+</ul>
+<h3 id="abrasessionepoch">abra.session.Epoch</h3>
+<pre><code>Epochs(Base)
+</code></pre>
+
+<p>Subclass of Base that hold time locking epochs</p>
+<p><strong>Parameter:</strong></p>
+<ul>
+<li><strong>Base</strong>: [Base][#abrasessionBase] class</li>
+</ul>
+<p><strong>Attributes:</strong></p>
+<ul>
+<li>
+<p><strong>data</strong>: List of <a href="#abratrialtrial">Trial</a> objects</p>
+</li>
+<li>
+<p><strong>sample_rate</strong>: Hold the value of the sample rate that the trial was recorded with</p>
+</li>
+<li>
+<p><strong>conditions</strong>: Condition that you want the data to be treated with.</p>
+</li>
+</ul>
+<p><strong>Return:</strong></p>
+<ul>
+<li><strong>Epoch</strong>: returns a Epoch object</li>
+</ul>
+<h2 id="abravisualization">abra.Visualization</h2>
+<pre><code>Class Visualization(data, quality_list)
+</code></pre>
+
+<p>Used to visualize pupil size and eye movements across trial time to inspect if plots resemble a good trial or bad trial. When Visualization object is created, it will create tkinter GUI application giving the options to move to the next trial, go to the previous trial, specify if the trial is good or bad, and save the quality list to to any directory.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li>
+<p><strong>data</strong>: <a href="#abrasessionsession">Sessions</a> or <a href="#abrasessionepoch">Epoch</a> object</p>
+</li>
+<li>
+<p><strong>quality_list</strong>: file path to quality list. Default is None</p>
+</li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul>
+<li><strong>Visualization</strong>: returns a Visualization object holding all information predefined including quality list.</li>
+<li><strong>tkinter GUI</strong>: opens a tkinter GUI application to inspect trials.</li>
+</ul>
               
             </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../trial_check/" class="btn btn-neutral float-right" title="Terminal Application">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href=".." class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -127,6 +642,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../trial_check/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
