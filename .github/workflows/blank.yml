@@ -26,3 +26,5 @@ jobs:
         # You may pin to the exact commit or the version.
         # uses: mhausenblas/mkdocs-deploy-gh-pages@614194266daf30b8237c5110fe6203f7a367a2ca
         uses: mhausenblas/mkdocs-deploy-gh-pages@1.14
+        env:
+          GITHUB_TOKEN: ${{ c8b9efed2bd5dbfec28a31afd1ff29062835bbfb }}
