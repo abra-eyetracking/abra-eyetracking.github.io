@@ -7,3 +7,8 @@ nav:
   - License: license.md
 
 theme: readthedocs
+
+
+- name: Deploy MkDocs
+  uses: mhausenblas/mkdocs-deploy-gh-pages@1.14
+
